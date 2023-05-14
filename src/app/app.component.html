@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+
+  <nav class="mb-4">
+    <a routerLink="/books/list" routerLinkActive="active" class="me-2">Dashboard</a>
+    <a routerLink="/books/search" routerLinkActive="active" class="me-2">Suche</a>
+    <a routerLink="/admin/create" routerLinkActive="active" class="me-2">ADMIN</a>
+    <a routerLink="/about" routerLinkActive="active" class="me-2">About</a>
+
+    <span class="float-end">
+      <button (click)="authService.toggleAuth()" *ngIf="authService.isAuthenticated" class="btn btn-danger">Logout</button>
+      <button (click)="authService.toggleAuth()" *ngIf="!authService.isAuthenticated" class="btn btn-success">Login</button>
+    </span>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>

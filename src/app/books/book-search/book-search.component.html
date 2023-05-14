@@ -1,0 +1,4 @@
+<input type="text" placeholder="Search …" class="form-control mb-5" [formControl]="searchControl">
+
+<app-book *ngFor="let book of books$ | async" [book]="book" />
+
