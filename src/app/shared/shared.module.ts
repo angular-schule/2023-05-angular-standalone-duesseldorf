@@ -4,17 +4,7 @@ import { NumToArrayPipe } from './num-to-array.pipe';
 import { RatingComponent } from './rating/rating.component';
 
 
-@NgModule({
-  declarations: [
-    NumToArrayPipe,
-    RatingComponent
-  ],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    RatingComponent,
-    NumToArrayPipe
-  ]
-})
-export class SharedModule { }
+export const SHARED_THINGS = [
+  NumToArrayPipe,
+  RatingComponent
+];
