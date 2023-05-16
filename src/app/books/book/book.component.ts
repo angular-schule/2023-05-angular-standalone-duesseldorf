@@ -13,7 +13,7 @@ import { RatingComponent } from '../../shared/rating/rating.component';
   imports: [NgIf, CurrencyPipe, RouterLink, RatingComponent]
 })
 export class BookComponent {
-  @Input() book?: Book;
+  @Input({ required: true }) book?: Book;
 
   @Output() rateUp = new EventEmitter<Book>();
   @Output() rateDown = new EventEmitter<Book>();
