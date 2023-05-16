@@ -5,11 +5,11 @@ const routes: Routes = [
   { path: '', redirectTo: 'books', pathMatch: 'full' },
   {
     path: 'about',
-    loadComponent: () => import('./about/about.component').then(m => m.AboutComponent)
+    loadComponent: () => import('./about/about.component')
   },
   {
     path: 'books',
-    loadChildren: () => import('./books/books.routes').then(m => m.booksRoutes)
+    loadChildren: () => import('./books/books.routes')
   }
 ];
 
