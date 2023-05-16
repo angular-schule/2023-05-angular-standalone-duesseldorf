@@ -4,7 +4,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminModule } from './admin/admin.module';
+
 import { TokenInterceptor } from './shared/token.interceptor';
 
 @NgModule({
@@ -15,8 +15,8 @@ import { TokenInterceptor } from './shared/token.interceptor';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AdminModule
-  ],
+    // AdminModule
+],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

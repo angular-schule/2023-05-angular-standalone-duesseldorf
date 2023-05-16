@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Book } from '../../shared/book';
 import { BookStoreService } from '../../shared/book-store.service';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-book-create',
-  templateUrl: './book-create.component.html',
-  styleUrls: ['./book-create.component.scss']
+    selector: 'app-book-create',
+    templateUrl: './book-create.component.html',
+    styleUrls: ['./book-create.component.scss'],
+    standalone: true,
+    imports: [ReactiveFormsModule, NgIf]
 })
 export class BookCreateComponent {
   bookForm = new FormGroup({
