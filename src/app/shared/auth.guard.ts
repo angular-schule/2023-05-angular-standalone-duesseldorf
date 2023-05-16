@@ -1,17 +1,15 @@
-import { Router } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from './auth.service';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { BookStoreService } from './book-store.service';
 
-@Injectable({ providedIn: 'root' })
-export class AuthGuard {
-  constructor(private auth: AuthService, private router: Router) {}
+export const authGuard: CanActivateFn = () => {
+  // const bs = inject(BookStoreService);
 
-  canActivate() {
-    if (this.auth.isAuthenticated) {
-      return true;
-    } else {
-      window.alert('Not logged in!');
-      return this.router.parseUrl('/');
-    }
+  if (inject(AuthService).isAuthenticated) {
+    return true;
+  } else {
+    window.alert('Not logged in!');
+    return inject(Router).parseUrl('/');
   }
 }
