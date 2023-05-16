@@ -12,12 +12,12 @@ import { BookSearchComponent } from './book-search/book-search.component';
 @NgModule({
   declarations: [
     DashboardComponent,
-    BookComponent,
     BookDetailsComponent,
     BookSearchComponent
   ],
   imports: [
     CommonModule,
+    BookComponent,
     BooksRoutingModule,
     SHARED_THINGS,
     ReactiveFormsModule,

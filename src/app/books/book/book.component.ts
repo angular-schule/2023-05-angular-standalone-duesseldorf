@@ -1,11 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Book } from '../../shared/book';
+import { CurrencyPipe, NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { RatingComponent } from '../../shared/rating/rating.component';
 
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.scss']
+  styleUrls: ['./book.component.scss'],
+  standalone: true,
+  imports: [NgIf, CurrencyPipe, RouterLink, RatingComponent]
 })
 export class BookComponent {
   @Input() book?: Book;
