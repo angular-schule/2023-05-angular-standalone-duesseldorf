@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BookStoreService } from '../../shared/book-store.service';
 import { BookComponent } from '../book/book.component';
 import { NgIf, NgFor, AsyncPipe } from '@angular/common';
@@ -11,8 +11,16 @@ import { NgIf, NgFor, AsyncPipe } from '@angular/common';
     imports: [NgIf, NgFor, BookComponent, AsyncPipe]
 })
 export class DashboardComponent {
-  books$ = this.bs.getAll();
+  // TS 2 // JS 1
+  private bs = inject(BookStoreService);
+  books$ = inject(BookStoreService).getAll();
 
-  constructor(private bs: BookStoreService) {}
+  // TS 1 // JS 2
+  constructor(
+    // private bs: BookStoreService
+  ) {
+    // TS 3 // JS 3
+    console.log('DB');
+  }
 }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injector, inject, runInInjectionContext } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { map, switchMap } from 'rxjs';
 
@@ -14,10 +14,10 @@ import { NgIf, AsyncPipe } from '@angular/common';
 })
 export class BookDetailsComponent {
 
-  book$ = this.route.paramMap.pipe(
+  private bs = inject(BookStoreService);
+
+  book$ = inject(ActivatedRoute).paramMap.pipe(
     map(params => params.get('isbn')!),
     switchMap(isbn => this.bs.getSingle(isbn))
-  );;
-
-  constructor(private route: ActivatedRoute, private bs: BookStoreService) {}
+  );
 }
