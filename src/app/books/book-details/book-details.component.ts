@@ -1,4 +1,4 @@
-import { Component, Injector, inject, runInInjectionContext } from '@angular/core';
+import { Component, Injector, Input, inject, runInInjectionContext } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { map, switchMap } from 'rxjs';
 
@@ -13,6 +13,8 @@ import { NgIf, AsyncPipe } from '@angular/common';
     imports: [NgIf, RouterLink, AsyncPipe]
 })
 export class BookDetailsComponent {
+
+  @Input() isbn?: string;
 
   private bs = inject(BookStoreService);
 
