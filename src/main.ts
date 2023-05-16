@@ -9,6 +9,7 @@ import { TokenInterceptor } from './app/shared/token.interceptor';
 import { HTTP_INTERCEPTORS, withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
 import { provideRouter } from '@angular/router';
 import { adminRoutes } from './app/admin/admin.routes';
+import { myApiUrl } from './token';
 
 
 bootstrapApplication(AppComponent, {
@@ -19,7 +20,8 @@ bootstrapApplication(AppComponent, {
           multi: true
       },
       provideHttpClient(withInterceptorsFromDi()),
-      provideRouter([...routes, ...adminRoutes])
+      provideRouter([...routes, ...adminRoutes]),
+      { provide: myApiUrl, useValue: 'https://api.angular.schule' }
   ]
 })
   .catch(err => console.error(err));

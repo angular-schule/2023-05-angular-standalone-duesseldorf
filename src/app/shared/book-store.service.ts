@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Book } from './book';
+import { myApiUrl } from 'src/token';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookStoreService {
-  private apiUrl = 'https://api.angular.schule';
+  // private apiUrl = 'https://api.angular.schule';
+  private apiUrl = inject(myApiUrl);
 
   constructor(private http: HttpClient) { }
 
