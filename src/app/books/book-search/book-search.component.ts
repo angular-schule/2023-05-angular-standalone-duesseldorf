@@ -1,13 +1,17 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, of, switchMap } from 'rxjs';
 
 import { BookStoreService } from '../../shared/book-store.service';
+import { BookComponent } from '../book/book.component';
+import { NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-book-search',
-  templateUrl: './book-search.component.html',
-  styleUrls: ['./book-search.component.scss']
+    selector: 'app-book-search',
+    templateUrl: './book-search.component.html',
+    styleUrls: ['./book-search.component.scss'],
+    standalone: true,
+    imports: [ReactiveFormsModule, NgFor, BookComponent, AsyncPipe]
 })
 export class BookSearchComponent {
   searchControl = new FormControl('', { nonNullable: true });

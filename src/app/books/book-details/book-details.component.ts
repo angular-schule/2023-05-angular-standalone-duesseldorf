@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { map, switchMap } from 'rxjs';
 
 import { BookStoreService } from '../../shared/book-store.service';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-book-details',
-  templateUrl: './book-details.component.html',
-  styleUrls: ['./book-details.component.scss']
+    selector: 'app-book-details',
+    templateUrl: './book-details.component.html',
+    styleUrls: ['./book-details.component.scss'],
+    standalone: true,
+    imports: [NgIf, RouterLink, AsyncPipe]
 })
 export class BookDetailsComponent {
 

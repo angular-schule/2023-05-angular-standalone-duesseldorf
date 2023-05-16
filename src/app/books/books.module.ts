@@ -9,16 +9,14 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { BookSearchComponent } from './book-search/book-search.component';
 
 @NgModule({
-  declarations: [
-    DashboardComponent,
-    BookDetailsComponent,
-    BookSearchComponent
-  ],
-  imports: [
-    CommonModule,
-    BookComponent,
-    BooksRoutingModule,
-    ReactiveFormsModule,
-  ]
+    imports: [
+        CommonModule,
+        BookComponent,
+        BooksRoutingModule,
+        ReactiveFormsModule,
+        DashboardComponent,
+        BookDetailsComponent,
+        BookSearchComponent,
+    ]
 })
 export class BooksModule { }
