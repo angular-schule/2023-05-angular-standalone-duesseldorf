@@ -1,3 +1,25 @@
+Name: {{ name() }}<br>
+Name$: {{ name$ | async }}<br>
+Lastname: {{ lastName() }}<br>
+Full name: {{ fullName() }}
+
+<hr>
+
+<button (click)="updateName('Hauke')">Hauke</button>
+<button (click)="updateName('benedikt')">Benedikt</button>
+<button (click)="updateName('Luiz')">Luiz</button>
+<button (click)="updateName('Sofie')">Sofie</button>
+
+<hr>
+
+<button (click)="updateLastName('Schneider')">Schneider</button>
+<button (click)="updateLastName('Meier')">Meier</button>
+<button (click)="updateLastName('Öztürk')">Öztürk</button>
+<button (click)="updateLastName('Nguyen')">Nguyen</button>
+
+<hr>
+
+
 <ng-container *ngIf="books$ | async as books">
   <app-book *ngFor="let b of books" [book]="b" />
   <p>Anzahl Bücher: {{ books.length }}</p>
