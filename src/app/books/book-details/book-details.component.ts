@@ -1,9 +1,11 @@
 import { Component, Injector, Input, inject, runInInjectionContext } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Subject, map, switchMap, takeUntil } from 'rxjs';
+import { Subject, interval, map, switchMap, takeUntil, timer } from 'rxjs';
 
 import { BookStoreService } from '../../shared/book-store.service';
 import { NgIf, AsyncPipe } from '@angular/common';
+
 
 @Component({
     selector: 'app-book-details',
@@ -16,21 +18,17 @@ export class BookDetailsComponent {
 
   @Input() isbn?: string;
 
-  private destroy$ = new Subject<void>()
-
   private bs = inject(BookStoreService);
 
   book$ = inject(ActivatedRoute).paramMap.pipe(
     map(params => params.get('isbn')!),
     switchMap(isbn => this.bs.getSingle(isbn)),
-    takeUntil(this.destroy$)
   );
 
+  timer$ = interval(1000);
+
   constructor() {
-    this.book$.subscribe(e => console.log(e));
+    this.timer$.pipe(takeUntilDestroyed()).subscribe(e => console.log(e));
   }
 
-  ngOnDestroy() {
-    this.destroy$.next();
-  }
 }
